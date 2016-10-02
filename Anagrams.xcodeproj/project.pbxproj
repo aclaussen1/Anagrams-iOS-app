@@ -40,6 +40,7 @@
 		9CCA410E16CFDD8100B16E42 /* tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCA410C16CFDD8100B16E42 /* tile@2x.png */; };
 		B1FBA0281DA1C25B006D2911 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FBA0271DA1C25B006D2911 /* Level.m */; };
 		B1FBA02B1DA1C67B006D2911 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FBA02A1DA1C67B006D2911 /* GameController.m */; };
+		B1FBA02E1DA1CA4E006D2911 /* TileView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FBA02D1DA1CA4E006D2911 /* TileView.m */; };
 		DFC18D8986FD3F6727D2AC1C /* libPods-Anagrams.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 097ED2848A8A9D329952CFE4 /* libPods-Anagrams.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,8 @@
 		B1FBA0271DA1C25B006D2911 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		B1FBA0291DA1C67B006D2911 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		B1FBA02A1DA1C67B006D2911 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
+		B1FBA02C1DA1CA4E006D2911 /* TileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileView.h; sourceTree = "<group>"; };
+		B1FBA02D1DA1CA4E006D2911 /* TileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileView.m; sourceTree = "<group>"; };
 		C4438AF3AF15D8C7C0C26A3A /* Pods-Anagrams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anagrams.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anagrams/Pods-Anagrams.release.xcconfig"; sourceTree = "<group>"; };
 		F130A683B65218342EE7417D /* Pods-Anagrams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anagrams.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anagrams/Pods-Anagrams.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +184,8 @@
 		9C96FD7116D3C026009F7882 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				B1FBA02C1DA1CA4E006D2911 /* TileView.h */,
+				B1FBA02D1DA1CA4E006D2911 /* TileView.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 			files = (
 				9CCA40AD16CFD85A00B16E42 /* main.m in Sources */,
 				9CCA40B116CFD85A00B16E42 /* AppDelegate.m in Sources */,
+				B1FBA02E1DA1CA4E006D2911 /* TileView.m in Sources */,
 				B1FBA0281DA1C25B006D2911 /* Level.m in Sources */,
 				B1FBA02B1DA1C67B006D2911 /* GameController.m in Sources */,
 				9CCA40BD16CFD85A00B16E42 /* ViewController.m in Sources */,
