@@ -38,6 +38,7 @@
 		9CCA410516CFD9F500B16E42 /* slot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCA410116CFD9F500B16E42 /* slot@2x.png */; };
 		9CCA410D16CFDD8100B16E42 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCA410B16CFDD8100B16E42 /* tile.png */; };
 		9CCA410E16CFDD8100B16E42 /* tile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCA410C16CFDD8100B16E42 /* tile@2x.png */; };
+		B1FBA0281DA1C25B006D2911 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FBA0271DA1C25B006D2911 /* Level.m */; };
 		DFC18D8986FD3F6727D2AC1C /* libPods-Anagrams.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 097ED2848A8A9D329952CFE4 /* libPods-Anagrams.a */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		9CCA410A16CFDAE000B16E42 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		9CCA410B16CFDD8100B16E42 /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
 		9CCA410C16CFDD8100B16E42 /* tile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile@2x.png"; sourceTree = "<group>"; };
+		B1FBA0261DA1C25B006D2911 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		B1FBA0271DA1C25B006D2911 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		C4438AF3AF15D8C7C0C26A3A /* Pods-Anagrams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anagrams.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anagrams/Pods-Anagrams.release.xcconfig"; sourceTree = "<group>"; };
 		F130A683B65218342EE7417D /* Pods-Anagrams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anagrams.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anagrams/Pods-Anagrams.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +183,8 @@
 		9C96FD7216D3C02D009F7882 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				B1FBA0261DA1C25B006D2911 /* Level.h */,
+				B1FBA0271DA1C25B006D2911 /* Level.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -411,6 +416,7 @@
 			files = (
 				9CCA40AD16CFD85A00B16E42 /* main.m in Sources */,
 				9CCA40B116CFD85A00B16E42 /* AppDelegate.m in Sources */,
+				B1FBA0281DA1C25B006D2911 /* Level.m in Sources */,
 				9CCA40BD16CFD85A00B16E42 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
