@@ -35,6 +35,8 @@
     [self.view addSubview:gameLayer];
     
     self.controller.gameView = gameLayer;
+    self.controller.level = level1;
+    [self.controller dealRandomAnagram];
 }
 
 @end

@@ -9,6 +9,9 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.height
 #define kScreenHeight [UIScreen mainScreen].bounds.size.width
 
+//constant for the space between the tiles
+#define kTileMargin 20
+
 //add more definitions here
 
 
