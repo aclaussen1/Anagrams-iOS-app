@@ -75,6 +75,7 @@
             
             
             tile.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenWidth/4*3);
+            [tile randomize];
             /*
             NSLog(@"screen width: %f:",kScreenWidth);
             NSLog(@"screen height: %f:",kScreenHeight);
