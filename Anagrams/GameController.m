@@ -41,11 +41,12 @@
     NSLog(@"phrase[%i]: %@", ana2len, anagram2);
     
     //calculate the tile size by taking 90% of the width of the screen and dividing by the number of characters, using the phrase that has more characters
-    float tileSide = ceilf( kScreenWidth*0.9 / (float)MAX(ana1len,ana2len) ) - kTileMargin;
+    float tileSide = ceilf( kScreenHeight*0.9 / (float)MAX(ana1len,ana2len) ) - kTileMargin;
+    NSLog(@"%f",tileSide);
     
     //find the initial x position of the first tile, by taking screen width and subtracting the calculated width of the word tiles
     //(1) get the left margin for the first tile
-    float xOffset = (kScreenWidth - MAX(ana1len,ana2len) * (tileSide + kTileMargin))/2;
+    float xOffset = (kScreenHeight - MAX(ana1len,ana2len) * (tileSide + kTileMargin))/2;
     //(2)adjust for tile center
     xOffset += tileSide/2;
     
@@ -59,7 +60,27 @@
         //(3) Check if each letter is not a space. If not, create a new tile and position it. The tiles are positioned at 3/4th's the screen height
         if (![letter isEqualToString:@" "]) {
             TileView* tile = [[TileView alloc] initWithLetter:letter andSideLength:tileSide];
-            tile.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4*3);
+            
+            /*
+             In the Ray Wenderlich Code:tile.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4*3);
+             This is either a typo or no longer works. The height of my iPhone is 568 and the wdith is 320 (I checked this with:NSLog(@"screen width: %f:",kScreenWidth);
+             NSLog(@"screen height: %f:",kScreenHeight);
+             
+             kScreenHeight/4*3 yielded
+             426.000000. Since the phone is in landscape mode, this doesn't work, as the height actually becomes the width and the width becomes the height. As soon as I swapped out tile.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4*3); with
+             tile.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenWidth/4*3);
+             the code worked, where before no tiles were being displayed on the screen.
+             
+             */
+            
+            
+            tile.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenWidth/4*3);
+            /*
+            NSLog(@"screen width: %f:",kScreenWidth);
+            NSLog(@"screen height: %f:",kScreenHeight);
+            NSLog(@"xOffset + i*(tileSide + kTileMargin):%f", xOffset + i*(tileSide + kTileMargin));
+            NSLog(@"kScreenHeight/4*3:%f", kScreenHeight/4*3);
+             */
             
             //(4)add the tile to the gameView and to the _tiles array
             [self.gameView addSubview:tile];
@@ -69,6 +90,9 @@
         
         
     }
+    TileView *tile = [[TileView alloc] initWithLetter:@"h" andSideLength:50];
+    //[self.gameView addSubview:tile];
+    
 }
 
 @end

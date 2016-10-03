@@ -33,11 +33,13 @@
     //create new object
     self = [super initWithImage:img];
     
+    
     if (self != nil) {
         //resize tile
         float scale = sideLength/img.size.width;
         self.frame = CGRectMake(0, 0, img.size.width*scale, img.size.height*scale);
     }
+     
     
     return self;
 }
