@@ -38,8 +38,22 @@
         //resize tile
         float scale = sideLength/img.size.width;
         self.frame = CGRectMake(0, 0, img.size.width*scale, img.size.height*scale);
+        
+        //add letters to the tiles
+        UILabel* lbChar = [[UILabel alloc] initWithFrame:self.bounds];
+        lbChar.textAlignment = NSTextAlignmentCenter;
+        lbChar.textColor = [UIColor whiteColor];
+        lbChar.backgroundColor = [UIColor clearColor];
+        lbChar.text = [letter uppercaseString];
+        lbChar.font = [UIFont fontWithName:@"Verdana-Bold" size:78.0*scale];
+        [self addSubview:lbChar];
     }
-     
+
+    //begin in unmatched state
+    self.isMatched = NO;
+    
+    //save the letter
+    _letter = letter;
     
     return self;
 }

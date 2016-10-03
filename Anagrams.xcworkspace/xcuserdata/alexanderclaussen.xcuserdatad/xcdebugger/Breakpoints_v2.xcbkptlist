@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Anagrams/ViewController.m"
-            timestampString = "497222414.481044"
+            timestampString = "497224261.387486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51">
+            startingLineNumber = "48"
+            endingLineNumber = "48">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
