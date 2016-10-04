@@ -9,6 +9,9 @@
 #import "TileView.h"
 
 @implementation TileView
+{
+    int _xOffset, _yOffset;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -55,6 +58,9 @@
     //save the letter
     _letter = letter;
     
+    //enable user interaction
+    self.userInteractionEnabled = YES;
+    
     return self;
 }
 
@@ -68,6 +74,27 @@
     //2 move randomly upwards
     int yOffset = (arc4random() % 10) -10;
     self.center = CGPointMake(self.center.x, self.center.y + yOffset);
+}
+
+#pragma mark - dragging the tile
+
+//(1) When touch is detected, fetch its location in the tile's superview. Calculate and store the distance from the touch to the tile's center
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    CGPoint pt = [[touches anyObject] locationInView:self.superview];
+    _xOffset = pt.x - self.center.x;
+    _yOffset = pt.y -self.center.y;
+}
+
+//(2)when player moves finger, move the tile to that location, adjusting the position by the offsets stored in _xOffset and _yOffset. Keeps tile from centering itself as soon as the player moves their finger
+-(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    CGPoint pt = [[touches anyObject]locationInView:self.superview];//how does this work
+    self.center = CGPointMake(pt.x + _xOffset, pt.y + _yOffset);
+}
+
+//(3) When a player lifts a finger, you make one last call to touchesMoved:withEvent: to make sure the position is set to the final touch's location. Avoid repeating code to make maintenance easier
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self touchesMoved:touches withEvent:event];
 }
 
 @end

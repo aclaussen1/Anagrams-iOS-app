@@ -109,8 +109,7 @@
         
         
     }
-    TileView *tile = [[TileView alloc] initWithLetter:@"h" andSideLength:50];
-    //[self.gameView addSubview:tile];
+    
     
     
     
