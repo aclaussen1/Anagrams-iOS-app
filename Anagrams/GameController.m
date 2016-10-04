@@ -9,6 +9,7 @@
 #import "GameController.h"
 #import "config.h"
 #import "TileView.h"
+#import "TargetView.h"
 
 @implementation GameController
 {
@@ -49,6 +50,23 @@
     float xOffset = (kScreenHeight - MAX(ana1len,ana2len) * (tileSide + kTileMargin))/2;
     //(2)adjust for tile center
     xOffset += tileSide/2;
+    
+    _targets = [NSMutableArray arrayWithCapacity:ana2len];
+    
+    //create targets
+    for (int i= 0;i<ana2len;i++) {
+        NSString* letter = [anagram2 substringWithRange:NSMakeRange(1, 1)];
+        
+        if (![letter isEqualToString:@" "]) {
+            TargetView* target = [[TargetView alloc] initWithLetter:letter andSideLength:tileSide];
+            target.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4);
+            
+            [self.gameView addSubview:target];
+            [_targets addObject:target];
+        }
+    }
+    
+    
     
     //display the tiles
     //(1) initialize tile list mutable array and ensure it is large enough to hold all the leters in the initial phrase. This method will be called multiple times during a run of the app so it is important a new, clear array is generated
@@ -93,6 +111,9 @@
     }
     TileView *tile = [[TileView alloc] initWithLetter:@"h" andSideLength:50];
     //[self.gameView addSubview:tile];
+    
+    
+    
     
 }
 
