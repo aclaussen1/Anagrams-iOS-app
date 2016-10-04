@@ -83,7 +83,7 @@
 {
     CGPoint pt = [[touches anyObject] locationInView:self.superview];
     _xOffset = pt.x - self.center.x;
-    _yOffset = pt.y -self.center.y;
+    _yOffset = pt.y - self.center.y;
 }
 
 //(2)when player moves finger, move the tile to that location, adjusting the position by the offsets stored in _xOffset and _yOffset. Keeps tile from centering itself as soon as the player moves their finger

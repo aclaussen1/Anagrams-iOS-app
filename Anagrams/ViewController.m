@@ -36,7 +36,7 @@
     NSLog(@"anagrams: %@", level1.anagrams);
     
     //add one layer for all game elements. Create a new view iwth dimensions of the screen. Assign it to the gameView property of the Game controller instance. The GameController instance will use this view for all game elements
-    UIView* gameLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    UIView* gameLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenHeight, kScreenWidth)];
     [self.view addSubview:gameLayer];
     self.controller.gameView = gameLayer;
     self.controller.level = level1;
