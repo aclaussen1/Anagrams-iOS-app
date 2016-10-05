@@ -95,6 +95,11 @@
 //(3) When a player lifts a finger, you make one last call to touchesMoved:withEvent: to make sure the position is set to the final touch's location. Avoid repeating code to make maintenance easier
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self touchesMoved:touches withEvent:event];
+    
+    //if statement checks if dragDelegate property is set. if so, calls delegates tileView:didDragPoint: method, passing it self and self.center
+    if (self.dragDelegate) {
+        [self.dragDelegate tileView:self didDragToPoint:self.center];
+    }
 }
 
 @end

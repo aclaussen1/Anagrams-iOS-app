@@ -55,7 +55,9 @@
     
     //create targets
     for (int i= 0;i<ana2len;i++) {
-        NSString* letter = [anagram2 substringWithRange:NSMakeRange(1, 1)];
+        //NSString* letter = [anagram2 substringWithRange:NSMakeRange(i, i)];
+        unichar l = [anagram2 characterAtIndex:i];
+        NSString* letter = [NSString stringWithCharacters:&l length:1];
         
         if (![letter isEqualToString:@" "]) {
             TargetView* target = [[TargetView alloc] initWithLetter:letter andSideLength:tileSide];
@@ -94,6 +96,7 @@
             
             tile.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenWidth/4*3);
             [tile randomize];
+            tile.dragDelegate = self;
             /*
             NSLog(@"screen width: %f:",kScreenWidth);
             NSLog(@"screen height: %f:",kScreenHeight);
@@ -110,10 +113,81 @@
         
     }
     
+}
+
+-(void)tileView:(TileView *)tileView didDragToPoint:(CGPoint)pt {
+    TargetView* targetView = nil;
+    NSLog(@"hi1");
+    
+    int j = 0;
+    for (TargetView* tv in _targets) {
+        j++;
+        
+        NSLog(@"target view %i has letter %@",j,tv.letter);
+    }
+    
+    int i = 0;
+    for (TargetView* tv in _targets) {
+        i++;
+        NSLog(@"hi5");
+        //if statement checks if tile's center point was dropped into the target. Will not succeed if only a small portion of the tile was dropped in.
+        NSLog(@"bounds:origin of tv:(%f,%f) ",tv.bounds.origin.x,tv.bounds.origin.y);
+        
+        if (CGRectContainsPoint(tv.frame,pt)) {
+            targetView = tv;
+            NSLog(@"tv: %i", i);
+            break;
+        }
+    }
+    
+        //check to see if a target was found
+        if (targetView != nil) {
+            NSLog(@"hi2");
+            //check if letter matches
+            NSLog(@"targetView.letter:%@ tileView.letter:%@ ", targetView.letter, tileView.letter);
+            if ([targetView.letter isEqualToString:tileView.letter]) {
+                NSLog(@"hi3");
+                [self placeTile:tileView atTarget:targetView];
+                
+                //more stuff to do here
+                
+                NSLog(@"Check to see if the player has completed the phrase.");
+            } else {
+                //
+                NSLog(@"hi4");
+                [tileView randomize];
+                
+                //do an animation that does extra offsetting by a random value of the tile center's x and y positions
+                [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
+                                 animations:^{
+                                     tileView.center = CGPointMake(tileView.center.x + randomf(-20,20), tileView.center.y + randomf(20,30));
+                                 } completion:nil];
+            }
+        }
     
     
+}
+
+-(void)placeTile:(TileView *)tileView atTarget:(TargetView*) targetView {
+    //(1) set isMatched property of both target and tileView
+    targetView.isMatched = YES;
+    tileView.isMatched = YES;
     
+    //(2) disable user interactions for this tile. The user will not be able to move a tile once it is successfully placed
+    tileView.userInteractionEnabled = NO;
     
+    //(3)create a short-lasting animation. passing in UIViewAnimationOptionCurveEaseOut, UIAnimtation will automatically calculate an easy-out animation
+    [UIView animateWithDuration:0.35
+                          delay:0.00
+                          options:UIViewAnimationOptionCurveEaseOut
+                        //(4)Defines changes that should happen during the animation. In this case, move the tile so its center is the targetView's center.  CGAffineTransformIdentity is essentially no transformation. So it undoes any changes to scale and rotation.
+                          animations:^{
+                            tileView.center = targetView.center;
+                            tileView.transform = CGAffineTransformIdentity;
+                              //(5)When the animation is complete, hide the targetView (not really necessary since targetView is behind tileView, but good practice)
+                        } completion:^(BOOL finished) {
+                            targetView.hidden = YES;
+                        }];
 }
 
 @end
