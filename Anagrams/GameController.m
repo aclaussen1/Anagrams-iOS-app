@@ -152,6 +152,7 @@
                 //more stuff to do here
                 
                 NSLog(@"Check to see if the player has completed the phrase.");
+                [self checkForSuccess];
             } else {
                 //
                 NSLog(@"hi4");
@@ -188,6 +189,14 @@
                         } completion:^(BOOL finished) {
                             targetView.hidden = YES;
                         }];
+}
+
+-(void)checkForSuccess {
+    for (TargetView* t in _targets) {
+        //no success, bail out
+        if (t.isMatched == NO) return;
+    }
+    NSLog(@"Game over!");
 }
 
 @end

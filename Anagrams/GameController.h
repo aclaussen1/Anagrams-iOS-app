@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Level.h"
 #import "TileView.h"
+#import "HUDView.h"
+
 
 @interface GameController : NSObject <TileDragDelegateProtocol>
 
@@ -18,6 +20,8 @@
 
 //the current level
 @property (strong, nonatomic) Level* level;
+
+@property (weak, nonatomic) HUDView * hud;
 
 //display a new anagram on the screen
 -(void)dealRandomAnagram;

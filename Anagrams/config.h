@@ -20,6 +20,8 @@
 #define deg2rad(x) x * M_PI / 180
 #define randomf(minX,maxX) ((float)(arc4random() % (maxX - minX + 1)) + (float)minX)
 
+#define kFontHUD [UIFont fontWithName:@"comic andy" size:62.0]
+#define kFontHUDBig [UIFont fontWithName:@"comic andy" size:120.0]
 
 #define configed 1
 #endif

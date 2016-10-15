@@ -8,6 +8,7 @@
 #import "Level.h"
 #import "GameController.h"
 #import "TileView.h"
+#import "HUDView.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) GameController* controller;
@@ -39,6 +40,11 @@
     UIView* gameLayer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenHeight, kScreenWidth)];
     [self.view addSubview:gameLayer];
     self.controller.gameView = gameLayer;
+    //add one layer for all the hud and controls
+    HUDView* hudView = [HUDView viewWithRect:CGRectMake(0, 0, kScreenHeight, kScreenWidth)];
+    [self.view addSubview:hudView];
+    
+    self.controller.hud = hudView;
     self.controller.level = level1;
     [self.controller dealRandomAnagram];
 }
